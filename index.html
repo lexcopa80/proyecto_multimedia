@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Multimedia - UMSA</title>
+    <link rel="stylesheet" href="estilos.css">
+    <!-- Librería de Google para ver tu fotogrametría 3D interactivamente -->
+   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    
+    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Plataforma Multimedia Interactiva</h1>
+        <p>Universidad Mayor de San Andrés - Grupo de Trabajo</p>
+        <nav>
+            <button class="nav-btn active" onclick="cambiarPestana('tramite')">1. Trámite Digital (JSON)</button>
+            <button class="nav-btn" onclick="cambiarPestana('unity')">2. Coreografía 3D (WebGL)</button>
+            <button class="nav-btn" onclick="cambiarPestana('fotogrametria')">3. Avatar Fotogrametría</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECCIÓN 1: TRÁMITES UNIVERSITARIOS (JSON) -->
+        <section id="tramite" class="seccion-contenido active">
+            <h2>Modernización de Trámites Universitarios</h2>
+            <p>Modelado de procesos y almacenamiento dinámico basado en archivos JSON.</p>
+            <div class="contenedor-componente">
+                <!-- Aquí tus compañeros integrarán su formulario o puedes llamarlo por iframe -->
+                <iframe src="tramites_json/index.html" title="Trámites JSON" style="width:100%; height:600px; border:none;"></iframe>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: COREOGRAFÍA 3D EN UNITY (WEBGL) -->
+       <section id="unity" class="seccion-contenido">
+            <h2>2. Coreografía 3D (WebGL)</h2>
+            <p>Representación interactiva en tiempo real con reproducción automática.</p>
+            
+            <div class="contenedor-componente">
+                <audio id="musicaAutoplay" src="mymusic.mp3" autoplay loop></audio>
+
+                <model-viewer
+                    id="gltf-coreografia"
+                    src="coreografia.glb"
+                    alt="Coreografía 3D"
+                    autoplay
+                    animation-name="*"
+                    camera-controls
+                    style="width: 100%; height: 550px; background-color: #0a0a12; border-radius: 8px;">
+                </model-viewer>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: AVATAR 3D (TU FOTOGRAMETRÍA) -->
+        <section id="fotogrametria" class="seccion-contenido">
+            <h2>Visualización del Avatar por Fotogrametría</h2>
+            <p>Modelo tridimensional realista generado a partir de capturas fotográficas de un integrante del grupo.</p>
+            <div class="contenedor-componente" style="display: flex; justify-content: center; background: #222; padding: 20px; border-radius: 8px;">
+                
+                <!-- VISOR INTERACTIVO 3D -->
+                <!-- Cambia 'hombresillo.glb' por la ruta real de tu archivo de fotogrametría -->
+                <model-viewer
+                src="fotogra.glb"
+                alt="Avatar 3D por Fotogrametría"
+                autoplay
+                animation-name="*"
+                camera-controls
+                style="width: 100%; height: 500px; background-color: #333;">
+            </model-viewer>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 - Carrera de Informática - UMSA</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
