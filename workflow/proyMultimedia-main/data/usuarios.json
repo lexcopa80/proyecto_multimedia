@@ -1,0 +1,31 @@
+[
+  {
+    "ru": "1707441",
+    "nombre": "Alberth Guarachi Arguata",
+    "contrasena": "12345",
+    "rol": "admin",
+    "carrera": "Ingenieria de Sistemas",
+    "plan": "2025",
+    "materiasAprobadas": [
+      "INF-101",
+      "MAT-101",
+      "COM-101"
+    ],
+    "deudaActiva": false,
+    "procesosPendientes": false
+  },
+  {
+    "ru": "2026123",
+    "nombre": "Juan Perez Gomez",
+    "contrasena": "abc123",
+    "carrera": "Ingenieria de Sistemas",
+    "plan": "2026",
+    "materiasAprobadas": [
+      "INF-101",
+      "MAT-101"
+    ],
+    "deudaActiva": false,
+    "procesosPendientes": false,
+    "rol": "estudiante"
+  }
+]

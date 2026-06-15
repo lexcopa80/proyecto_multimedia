@@ -1,0 +1,14 @@
+[
+  {
+    "id": "INS-DF7750CF",
+    "ru": "1707441",
+    "nombreEstudiante": "Alberth Guarachi Arguata",
+    "codigoMateria": "INF-201",
+    "nombreMateria": "Programacion II",
+    "codigoParalelo": "A",
+    "horario": "Lun/Mie 08:00-10:00",
+    "estado": "confirmada",
+    "fecha": "2026-06-14T08:16:54.963Z",
+    "tipo": "inscripcion"
+  }
+]
