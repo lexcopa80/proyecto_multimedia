@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema UMSA - Tramites JSON</title>
+  <link rel="stylesheet" href="/estilos.css" />
+</head>
+<body>
+  <div class="fondo"></div>
+  <main class="contenedor-principal">
+    <section class="hero">
+      <div>
+        <p class="etiqueta">UMSA · Tramites universitarios</p>
+        <h1>Inscripcion y emision de certificados con almacenamiento JSON</h1>
+        <p class="descripcion">Login con RU y contraseña, control de requisitos, cupos, registro historico y descarga de boletas o certificados.</p>
+      </div>
+    </section>
+
+    <section class="tarjeta login" id="panelLogin">
+      <h2>Inicio de sesion</h2>
+      <p class="descripcion compacta">Ingresa con el RU y contraseña del estudiante de prueba para revisar los apartados del flujo.</p>
+      <form id="formLogin" class="formulario-grid">
+        <label>
+          RU
+          <input id="campoRu" name="ru" type="text" placeholder="1707441" required />
+        </label>
+        <label>
+          Contraseña
+          <input id="campoContrasena" name="contrasena" type="password" placeholder="12345" required />
+        </label>
+        <button class="boton primario" type="submit">Ingresar</button>
+      </form>
+      <p id="mensajeLogin" class="mensaje"></p>
+    </section>
+
+    <section class="tablero oculto" id="panelPrincipal">
+      <header class="barra-superior">
+        <div>
+          <p class="etiqueta">Sesion activa</p>
+          <h2 id="nombreUsuario">Estudiante</h2>
+          <p id="detalleUsuario" class="descripcion compacta"></p>
+        </div>
+        <div class="grupo-acciones">
+          <button class="boton secundario" id="botonIrInscripcion" type="button">Inscripcion de materias</button>
+          <button class="boton secundario" id="botonIrCertificaciones" type="button">Certificaciones</button>
+          <button id="botonIrAdministracion" class="boton secundario oculto" type="button">Administracion</button>
+          <button id="cerrarSesion" class="boton secundario" type="button">Cerrar sesion</button>
+        </div>
+      </header>
+
+      <section id="seccionInscripcion" class="seccion-app">
+        <article class="tarjeta modulo">
+          <div class="encabezado-modulo">
+            <div>
+              <p class="etiqueta">Apartado 1</p>
+              <h3>Inscripcion de materias</h3>
+            </div>
+            <span id="estadoInscripcion" class="chip">Listo</span>
+          </div>
+          <div id="panelCronograma" class="panel-info panel-destacado"></div>
+          <form id="formInscripcion" class="formulario-grid">
+            <label>
+              Materia
+              <select id="selectMateria" required></select>
+            </label>
+            <label>
+              Paralelo
+              <select id="selectParalelo" required></select>
+            </label>
+            <button class="boton secundario" id="botonValidarInscripcion" type="button">Verificar requisitos</button>
+            <button class="boton primario" id="botonConfirmarInscripcion" type="button" disabled>Confirmar inscripcion</button>
+          </form>
+          <div class="panel-info" id="infoInscripcion">Selecciona una materia para ver sus datos.</div>
+          <div class="historial">
+            <h4>Historial de inscripciones</h4>
+            <div id="listaInscripciones" class="lista-documentos"></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="seccionCertificaciones" class="seccion-app oculto">
+        <article class="tarjeta modulo">
+          <div class="encabezado-modulo">
+            <div>
+              <p class="etiqueta">Apartado 2</p>
+              <h3>Emision de certificados</h3>
+            </div>
+            <span id="estadoCertificado" class="chip chip-oscuro">Pendiente</span>
+          </div>
+          <form id="formCertificado" class="formulario-grid">
+            <label>
+              Tipo de certificado
+              <select id="selectTipoCertificado" required>
+                <option value="Certificado de estudios">Certificado de estudios</option>
+                <option value="Certificado de notas">Certificado de notas</option>
+                <option value="Certificado de conducta">Certificado de conducta</option>
+              </select>
+            </label>
+            <label>
+              Motivo / observacion
+              <input id="campoMotivo" type="text" placeholder="Tramite para convocatoria, beca, etc." />
+            </label>
+            <label>
+              Metodo de pago
+              <select id="selectMetodoPago">
+                <option value="transferencia">Transferencia</option>
+                <option value="caja">Caja</option>
+                <option value="qr">Codigo QR</option>
+              </select>
+            </label>
+            <button class="boton secundario" id="botonValidarCertificado" type="button">Verificar requisitos</button>
+            <button class="boton primario" id="botonCrearCertificado" type="button" disabled>Enviar solicitud</button>
+            <button class="boton exito" id="botonPagarCertificado" type="button" disabled>Pagar y generar PDF</button>
+          </form>
+          <div class="panel-info" id="infoCertificado">Completa la solicitud para habilitar la emision.</div>
+          <div class="historial">
+            <h4>Historial de certificados</h4>
+            <div id="listaCertificados" class="lista-documentos"></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="seccionAdministracion" class="seccion-app oculto">
+        <article class="tarjeta modulo">
+          <div class="encabezado-modulo">
+            <div>
+              <p class="etiqueta">Panel de administracion</p>
+              <h3>Fechas, materias y paralelos</h3>
+            </div>
+            <span class="chip chip-oscuro">Solo usuario de prueba</span>
+          </div>
+
+          <div class="rejilla-dos">
+            <form id="formConfiguracion" class="formulario-grid">
+              <h4>Configurar cronograma</h4>
+              <label>
+                Fecha inicio de inscripcion
+                <input id="adminFechaInicio" type="date" required />
+              </label>
+              <label>
+                Fecha fin de inscripcion
+                <input id="adminFechaFin" type="date" required />
+              </label>
+              <label class="checkbox-linea"><input id="adminInscripcionActiva" type="checkbox" /> Inscripcion habilitada</label>
+              <label class="checkbox-linea"><input id="adminCertificadosActivos" type="checkbox" /> Certificaciones habilitadas</label>
+              <button class="boton primario" type="submit">Guardar cronograma</button>
+            </form>
+
+            <form id="formMateria" class="formulario-grid">
+              <h4>Crear o actualizar materia</h4>
+              <label>
+                Codigo de materia
+                <input id="adminCodigoMateria" type="text" placeholder="INF-301" required />
+              </label>
+              <label>
+                Nombre de materia
+                <input id="adminNombreMateria" type="text" placeholder="Base de Datos I" required />
+              </label>
+              <label>
+                Requisitos separados por coma
+                <input id="adminRequisitosMateria" type="text" placeholder="INF-201, MAT-201" />
+              </label>
+              <label>
+                Codigo de paralelo
+                <input id="adminCodigoParalelo" type="text" placeholder="A" />
+              </label>
+              <label>
+                Horario
+                <input id="adminHorarioParalelo" type="text" placeholder="Lun/Mie 18:00-20:00" />
+              </label>
+              <label>
+                Cupo maximo
+                <input id="adminCupoParalelo" type="number" min="1" step="1" value="30" />
+              </label>
+              <button class="boton primario" type="submit">Guardar materia y paralelo</button>
+            </form>
+          </div>
+
+          <div class="rejilla-dos espacio-superior">
+            <form id="formUsuario" class="formulario-grid">
+              <h4>Crear usuario estudiante</h4>
+              <label>
+                RU
+                <input id="adminUsuarioRu" type="text" placeholder="2026123" required />
+              </label>
+              <label>
+                Nombre completo
+                <input id="adminUsuarioNombre" type="text" placeholder="Juan Perez Gomez" required />
+              </label>
+              <label>
+                Contraseña
+                <input id="adminUsuarioContrasena" type="text" placeholder="12345" required />
+              </label>
+              <label>
+                Carrera
+                <input id="adminUsuarioCarrera" type="text" placeholder="Ingenieria de Sistemas" required />
+              </label>
+              <label>
+                Plan
+                <input id="adminUsuarioPlan" type="text" placeholder="2025" required />
+              </label>
+              <label>
+                Materias aprobadas separadas por coma
+                <input id="adminUsuarioMaterias" type="text" placeholder="INF-101, MAT-101" />
+              </label>
+              <label class="checkbox-linea"><input id="adminUsuarioDeuda" type="checkbox" /> Tiene deuda activa</label>
+              <label class="checkbox-linea"><input id="adminUsuarioProcesos" type="checkbox" /> Tiene procesos pendientes</label>
+              <button class="boton primario" type="submit">Guardar estudiante</button>
+            </form>
+
+            <div>
+              <h4>Usuarios estudiante registrados</h4>
+              <div id="listaUsuariosAdmin" class="lista-documentos"></div>
+            </div>
+          </div>
+
+          <div class="historial">
+            <h4>Catalogo actual</h4>
+            <div id="listaMateriasAdmin" class="lista-documentos"></div>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

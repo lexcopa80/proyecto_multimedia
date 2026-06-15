@@ -1,0 +1,44 @@
+[
+  {
+    "id": "CER-49D623EF",
+    "ru": "1707441",
+    "nombreEstudiante": "Alberth Guarachi Arguata",
+    "tipoCertificado": "Certificado de estudios",
+    "motivo": "Solicitud de prueba para convocatoria",
+    "estado": "emitido",
+    "ordenPagoCancelada": false,
+    "pdfGenerado": true,
+    "fechaSolicitud": "2026-06-14T08:17:08.247Z",
+    "fechaPago": "2026-06-14T08:17:11.925Z",
+    "fechaEmision": "2026-06-14T08:17:11.925Z",
+    "detallePago": "transferencia"
+  },
+  {
+    "id": "CER-7CAF4CEC",
+    "ru": "2026123",
+    "nombreEstudiante": "Juan Perez Gomez",
+    "tipoCertificado": "Certificado de notas",
+    "motivo": "ksnfanfdklsmf",
+    "estado": "emitido",
+    "ordenPagoCancelada": false,
+    "pdfGenerado": true,
+    "fechaSolicitud": "2026-06-14T09:04:03.554Z",
+    "fechaPago": "2026-06-14T09:04:10.804Z",
+    "fechaEmision": "2026-06-14T09:04:10.805Z",
+    "detallePago": "transferencia"
+  },
+  {
+    "id": "CER-9C36D95D",
+    "ru": "1707441",
+    "nombreEstudiante": "Alberth Guarachi Arguata",
+    "tipoCertificado": "Certificado de notas",
+    "motivo": "",
+    "estado": "emitido",
+    "ordenPagoCancelada": false,
+    "pdfGenerado": true,
+    "fechaSolicitud": "2026-06-14T09:05:56.620Z",
+    "fechaPago": "2026-06-14T09:05:57.473Z",
+    "fechaEmision": "2026-06-14T09:05:57.473Z",
+    "detallePago": "transferencia"
+  }
+]

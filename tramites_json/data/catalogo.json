@@ -1,0 +1,72 @@
+[
+  {
+    "codigo": "INF-201",
+    "nombre": "Programacion II",
+    "requisitos": [
+      "INF-101"
+    ],
+    "paralelos": [
+      {
+        "codigo": "A",
+        "horario": "Lun/Mie 08:00-10:00",
+        "cupoMaximo": 30,
+        "inscritos": 13
+      },
+      {
+        "codigo": "B",
+        "horario": "Mar/Jue 10:00-12:00",
+        "cupoMaximo": 25,
+        "inscritos": 25
+      }
+    ]
+  },
+  {
+    "codigo": "MAT-201",
+    "nombre": "Calculo II",
+    "requisitos": [
+      "MAT-101"
+    ],
+    "paralelos": [
+      {
+        "codigo": "A",
+        "horario": "Lun/Mie 10:00-12:00",
+        "cupoMaximo": 30,
+        "inscritos": 18
+      },
+      {
+        "codigo": "C",
+        "horario": "Vie 08:00-11:00",
+        "cupoMaximo": 20,
+        "inscritos": 5
+      }
+    ]
+  },
+  {
+    "codigo": "ADM-150",
+    "nombre": "Introduccion a la Administracion",
+    "requisitos": [],
+    "paralelos": [
+      {
+        "codigo": "A",
+        "horario": "Mar/Jue 08:00-10:00",
+        "cupoMaximo": 40,
+        "inscritos": 9
+      }
+    ]
+  },
+  {
+    "codigo": "INF-301",
+    "nombre": "Base de Datos I",
+    "requisitos": [
+      "INF-201"
+    ],
+    "paralelos": [
+      {
+        "codigo": "A",
+        "horario": "Lun/Jue 18:00-20:00",
+        "cupoMaximo": 35,
+        "inscritos": 0
+      }
+    ]
+  }
+]

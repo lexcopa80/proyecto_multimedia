@@ -1,0 +1,10 @@
+{
+  "name": "proy-multimedia-umsa",
+  "version": "1.0.0",
+  "description": "Sistema web de tramites UMSA con almacenamiento JSON",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
